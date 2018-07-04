@@ -1,0 +1,32 @@
+<h1>ngx-order-pipe example</h1>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th [class.active]="order === 'employeeID'"
+            (click)="setOrder('employeeID')"
+        >
+          ID <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th [class.active]="order === 'name'"
+            (click)="setOrder('name')"
+            class="mdl-data-table__cell--non-numeric"
+        >
+          Name <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        
+      </tr>
+      </thead>
+      <tbody>
+          <!-- | orderBy: order:reverse:'case-insensitive'" -->
+      <tr (click)="row.isActiveCall = 1 " *ngFor="let row of collection  | orderBy: order:reverse:'case-insensitive'">
+        <td>{{ row.employeeID }}</td>
+        <td>{{ row.name }}</td>
+        <td>{{ row.isActiveCall }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
